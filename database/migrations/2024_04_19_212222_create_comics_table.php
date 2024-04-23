@@ -13,9 +13,6 @@ return new class extends Migration
     {
         Schema::create('comics', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->float('price');
-            $table->foreignId('author_id')->constrained();
             $table->string('series');
             $table->timestamps();
         });
