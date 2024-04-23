@@ -16,18 +16,8 @@ class Author extends Model
         'place_of_birth',
     ];
 
-    public function books() : hasMany
+    public function items() : hasMany
     {
-        return $this->hasMany(Book::class);
-    }
-
-    public function comics() : hasMany
-    {
-        return $this->hasMany(Comic::class);
-    }
-
-    public function shortStoryCollections() : hasMany
-    {
-        return $this->hasMany(ShortStoryCollection::class);
+        return $this->hasMany(Item::class);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class ShortStoryCollection extends Model
 {
@@ -14,8 +14,8 @@ class ShortStoryCollection extends Model
         'theme',
     ];
 
-    public function author() : BelongsTo
+    public function item(): MorphOne
     {
-        return $this->belongsTo(Author::class);
+        return $this->morphOne(Item::class, 'itemable');
     }
 }
