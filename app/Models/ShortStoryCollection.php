@@ -11,9 +11,6 @@ class ShortStoryCollection extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'price',
-        'author_id',
         'theme',
     ];
 
