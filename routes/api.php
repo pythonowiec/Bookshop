@@ -21,3 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/authors', [AuthorController::class, 'index']);
+
+Route::get('/items', [ItemController::class, 'index']);
+
+Route::get('/items/{id}/description', [ItemController::class, 'show']);
+
+Route::post('/items', [ItemController::class, 'store']);
+

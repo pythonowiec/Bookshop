@@ -13,6 +13,10 @@ class Book extends Model
     protected $fillable = [
         'genre',
     ];
+    public function getFillableFields(): array
+    {
+        return $this->fillable;
+    }
 
     public function item(): MorphOne
     {

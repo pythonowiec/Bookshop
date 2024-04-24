@@ -14,6 +14,12 @@ class ShortStoryCollection extends Model
         'theme',
     ];
 
+    public function getFillableFields(): array
+    {
+        return $this->fillable;
+    }
+
+
     public function item(): MorphOne
     {
         return $this->morphOne(Item::class, 'itemable');
