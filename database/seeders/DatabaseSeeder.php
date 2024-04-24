@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Author;
+use App\Models\Book;
+use App\Models\Comic;
+use App\Models\Item;
+use App\Models\ShortStoryCollection;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +16,36 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        Author::factory(5)->create()->each(function (Author $author) {
+            Book::factory(fake()->numberBetween(1, 9))->create()->each(function (Book $book) use ($author)  {
+                Item::factory()->count(1)->create(
+                    [
+                        'author_id' => $author->id,
+                        'itemable_id' => $book->id,
+                        'itemable_type' => Book::class
+                    ]
+                );
+            });
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+            Comic::factory(fake()->numberBetween(1, 9))->create()->each(function (Comic $comic) use ($author)  {
+                Item::factory()->count(1)->create(
+                    [
+                        'author_id' => $author->id,
+                        'itemable_id' => $comic->id,
+                        'itemable_type' => Comic::class
+                    ]
+                );
+            });
+
+            ShortStoryCollection::factory(fake()->numberBetween(1, 9))->create()->each(function (ShortStoryCollection $shortStoryCollection) use ($author) {
+                Item::factory()->count(1)->create(
+                    [
+                        'author_id' => $author->id,
+                        'itemable_id' => $shortStoryCollection->id,
+                        'itemable_type' => ShortStoryCollection::class
+                    ]
+                );
+            });
+        });
     }
 }
