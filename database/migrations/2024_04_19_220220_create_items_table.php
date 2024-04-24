@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->float('price');
-            $table->foreignId('author_id')->constrained();
+            $table->string('title')->nullable();
+            $table->float('price')->nullable();
+            $table->foreignId('author_id')->nullable()->constrained();
             $table->morphs('itemable');
             $table->timestamps();
         });

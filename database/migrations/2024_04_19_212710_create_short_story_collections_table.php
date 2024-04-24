@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('short_story_collections', function (Blueprint $table) {
             $table->id();
-            $table->string('theme');
+            $table->string('theme')->nullable();
             $table->timestamps();
         });
     }
