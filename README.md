@@ -21,6 +21,21 @@ Dodawanie produktu:
 http://127.0.0.1:8000/api/items
 ```
 
+Dostępne pola:
+
+- title -> tytuł
+- price -> cena
+- author_id - id autora
+- **type** -> id typu produktu:
+  - 1 -> Book:
+    - genre -> gatunek
+  - 2 -> Comic:
+    - series -> seria
+  - 3 -> ShortStoryColection:
+    - theme ->motyw
+
+**Uwaga!** Aby dodać wpis należy podać typ produktu. 
+
 ## Uruchomienie aplikacji
 
 1. Należy stworzyć nową bazę MySQL o nazwie `bookshop`
@@ -57,3 +72,4 @@ Aby uruchomić testy automatyczne należy:
 ```console
 ./vendor/bin/pest --filter ItemTest
 ```
+**Uwaga!** Uruchomienie testów czyści bazę danych, ale nie usuwa jej.
